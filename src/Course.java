@@ -5,7 +5,7 @@ public class Course {
     private String code;
     private String title;
     private int credits;
-    private List<Student> classList;  // ← Simple name: "classList" instead of "roster"
+    private List<Student> classList;
 
     public Course(String code, String title, int credits) {
         this.code = code;
