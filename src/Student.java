@@ -1,7 +1,6 @@
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
 public class Student extends Person implements Serializable {
     private String studentID;
     private double GPA;
