@@ -1,7 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Course {
+public class Course implements Serializable {
+    private static final long serialVersionUID = 1L; // Required for serialization
     private String code;
     private String title;
     private int credits;
@@ -11,20 +13,15 @@ public class Course {
         this.code = code;
         this.title = title;
         this.credits = credits;
-        this.classList = new ArrayList<>();  // Start with an empty class list
+        this.classList = new ArrayList<>();
     }
 
     public String getCode() { return code; }
     public String getTitle() { return title; }
     public int getCredits() { return credits; }
-
-    // Return the list of students in this class
     public List<Student> getClassList() { return classList; }
-
-    // Check if the class is full (30 students max)
     public boolean isFull() { return classList.size() >= 30; }
 
-    // Add a student to the class if they're not already in it
     public void addStudent(Student student) {
         if (!classList.contains(student)) {
             classList.add(student);
