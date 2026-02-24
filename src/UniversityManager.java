@@ -22,7 +22,7 @@ public class UniversityManager {
         if (course.isFull()) {
             throw new CourseFullException("Course " + course.getCode() + " is full.");
         }
-        if (course.getRoster().contains(student)) {
+        if (course.getClassList().contains(student)) {
             throw new StudentAlreadyEnrolledException("Student already enrolled in " + course.getCode());
         }
         course.addStudent(student);
