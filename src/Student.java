@@ -1,7 +1,9 @@
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
 public class Student extends Person implements Serializable {
+    private static final long serialVersionUID = 1L; // Required for serialization
     private String studentID;
     private double GPA;
     private String department;
@@ -37,5 +39,19 @@ public class Student extends Person implements Serializable {
     @Override
     public String getProfile() {
         return "Student{" + "ID=" + studentID + ", Name=" + getName() + ", GPA=" + GPA + '}';
+    }
+
+    // Ensure equals() and hashCode() are defined if needed for collections
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return studentID.equals(student.studentID);
+    }
+
+    @Override
+    public int hashCode() {
+        return studentID.hashCode();
     }
 }
