@@ -17,6 +17,17 @@ A logic-driven academic system built with **Java OOP & Collections**, featuring 
 - View student records and grades.
 - Generate Dean’s List (GPA > 3.5).
 - Save/load data via `students.dat` and `courses.dat`.
+  #  why serializable (person class)
+  | Concept            | Explanation                                                                 |
+| ------------------ | --------------------------------------------------------------------------- |
+| `serialVersionUID` | Unique identifier for serialized class versions                             |
+| Purpose            | Ensure deserialization matches the right class version                      |
+| When to define     | Always, if class implements `Serializable` and you persist objects          |
+| Recommended value  | Start with `1L`; increment if class changes break compatibility             |
+| Optional?          | Yes, Java will generate one automatically, but explicit definition is safer |
+
+
+
 
 # Project Structure  
 Phase-One-CapstoneProject/ ├── Lab1/ # OOP Design: Person, Student, Course and instructor ├── Lab2/ # Business Logic: UniversityManager, Exceptions ├── Lab3/ # File I/O: FileManager, Console Menu ├── src/ # Main application classes └── README.md # This file
