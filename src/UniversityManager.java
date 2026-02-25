@@ -3,10 +3,12 @@ import java.util.*;
 public class UniversityManager {
     private List<Student> students;
     private List<Course> courses;
+    private List<Instructor> instructors; // Track instructors
 
     public UniversityManager() {
         this.students = new ArrayList<>();
         this.courses = new ArrayList<>();
+        this.instructors = new ArrayList<>();
     }
 
     public void registerStudent(Student student) {
@@ -26,7 +28,15 @@ public class UniversityManager {
             throw new StudentAlreadyEnrolledException("Student already enrolled in " + course.getCode());
         }
         course.addStudent(student);
-        student.addCourseGrade(course, 0.0); // default grade
+        student.addCourseGrade(course, 0.0);
+    }
+
+    public void addInstructor(Instructor instructor) {
+        instructors.add(instructor);
+    }
+
+    public List<Instructor> getInstructors() {
+        return instructors;
     }
 
     public List<Student> getStudentsByDepartment(String dept) {
@@ -47,7 +57,6 @@ public class UniversityManager {
                 .toList();
     }
 
-    // Getters
     public List<Student> getStudents() { return students; }
     public List<Course> getCourses() { return courses; }
 }
