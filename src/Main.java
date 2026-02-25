@@ -129,15 +129,12 @@ public class Main {
     }
 
     private static void loadSavedData() {
-        List<Student> students = FileManager.loadData("students.dat");
-        List<Course> courses = FileManager.loadData("courses.dat");
-
-        if (students != null) um.getStudents().addAll(students);
-        if (courses != null) um.getCourses().addAll(courses);
+        // CSV loading logic can be added later
+        System.out.println("CSV loading not implemented yet. Starting with empty data.");
     }
 
     private static void saveData() {
-        FileManager.saveData(um.getStudents(), "students.dat");
-        FileManager.saveData(um.getCourses(), "courses.dat");
+        FileManager.saveData(um.getStudents(), "students.csv");
+        FileManager.saveData(um.getCourses(), "courses.csv");
     }
 }
