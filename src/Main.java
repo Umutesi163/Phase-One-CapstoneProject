@@ -17,7 +17,9 @@ public class Main {
                 case 3 -> enrollStudent();
                 case 4 -> viewStudentRecord();
                 case 5 -> generateDeansList();
-                case 6 -> {
+                case 6 -> registerInstructor();
+                case 7 -> assignInstructorToCourse();
+                case 8 -> {
                     saveData();
                     System.out.println("Goodbye!");
                     return;
@@ -34,7 +36,9 @@ public class Main {
         System.out.println("3. Enroll in Course");
         System.out.println("4. View Student Record");
         System.out.println("5. Generate Dean's List");
-        System.out.println("6. Save and Exit");
+        System.out.println("6. Register Instructor");
+        System.out.println("7. Assign Instructor to Course");
+        System.out.println("8. Save and Exit");
         System.out.print("Choose: ");
     }
 
@@ -97,7 +101,33 @@ public class Main {
         um.getDeansList().forEach(s -> System.out.println(s.getProfile()));
     }
 
-    @SuppressWarnings("unchecked")
+    private static void registerInstructor() {
+        System.out.print("Name: "); String name = sc.nextLine();
+        System.out.print("Email: "); String email = sc.nextLine();
+        System.out.print("Department: "); String dept = sc.nextLine();
+        System.out.print("Office Number: "); String office = sc.nextLine();
+        Instructor instructor = new Instructor(name, email, dept, office);
+        um.addInstructor(instructor);
+        System.out.println("Instructor registered.");
+    }
+
+    private static void assignInstructorToCourse() {
+        System.out.print("Instructor Email: "); String email = sc.nextLine();
+        System.out.print("Course Code: "); String code = sc.nextLine();
+        Instructor instructor = um.getInstructors().stream()
+                .filter(i -> i.getEmail().equals(email))
+                .findFirst().orElse(null);
+        Course course = um.getCourses().stream()
+                .filter(c -> c.getCode().equals(code))
+                .findFirst().orElse(null);
+        if (instructor == null || course == null) {
+            System.out.println("Invalid instructor or course.");
+            return;
+        }
+        course.setInstructor(instructor);
+        System.out.println("Instructor assigned to course.");
+    }
+
     private static void loadSavedData() {
         List<Student> students = FileManager.loadData("students.dat");
         List<Course> courses = FileManager.loadData("courses.dat");
