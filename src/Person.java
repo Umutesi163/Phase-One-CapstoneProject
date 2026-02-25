@@ -1,17 +1,19 @@
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
  * Abstract base class for all persons in the university system.
- *
+
  * This class now implements Serializable so that all subclasses
  * (Student, Instructor, etc.) can be saved to and loaded from files.
- *
+
  * Because Person implements Serializable, all subclasses automatically
  * become serializable as well.
  */
 public abstract class Person implements Serializable {
 
     // Recommended for Serializable classes to maintain version control
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String name;   // Full name of the person
