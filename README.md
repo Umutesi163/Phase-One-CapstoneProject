@@ -36,7 +36,7 @@ Phase-One-CapstoneProject/ ├── Lab1/ # OOP Design: Person, Student, Course
 javac Main.java
 java Main
 #  Persistence
-Data is saved to students.dat and courses.dat on exit.
+Data is saved to students.CSV and courses.CSV on exit.
 Files are auto-loaded on startup.
 #  Version Control
 Branches: Lab1, Lab2, Lab3
