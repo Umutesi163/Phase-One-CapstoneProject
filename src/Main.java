@@ -24,6 +24,7 @@ public class Main {
                     System.out.println("Goodbye!");
                     return;
                 }
+                case 9 -> addCourseGrade(); // NEW OPTION
                 default -> System.out.println("Invalid choice.");
             }
         }
@@ -39,6 +40,7 @@ public class Main {
         System.out.println("6. Register Instructor");
         System.out.println("7. Assign Instructor to Course");
         System.out.println("8. Save and Exit");
+        System.out.println("9. Add Course Grade"); // NEW
         System.out.print("Choose: ");
     }
 
@@ -128,8 +130,31 @@ public class Main {
         System.out.println("Instructor assigned to course.");
     }
 
+    private static void addCourseGrade() { // NEW METHOD
+        System.out.print("Student ID: ");
+        String id = sc.nextLine();
+        System.out.print("Course Code: ");
+        String code = sc.nextLine();
+        System.out.print("Grade: ");
+        double grade = sc.nextDouble(); sc.nextLine();
+
+        Student student = um.getStudents().stream()
+                .filter(s -> s.getStudentID().equals(id))
+                .findFirst().orElse(null);
+
+        Course course = um.getCourses().stream()
+                .filter(c -> c.getCode().equals(code))
+                .findFirst().orElse(null);
+
+        if(student != null && course != null) {
+            student.addCourseGrade(course, grade); // GPA updated automatically
+            System.out.println("Grade added successfully.");
+        } else {
+            System.out.println("Invalid student or course.");
+        }
+    }
+
     private static void loadSavedData() {
-        // CSV loading logic can be added later
         System.out.println("CSV loading not implemented yet. Starting with empty data.");
     }
 
